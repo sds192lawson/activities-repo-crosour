@@ -1,0 +1,56 @@
+---
+title: "Activity_2-2-26"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+mtcars
+data <- mtcars
+dim(data)
+```
+
+Part One:
+
+-   32 observations
+
+-   11 variables
+
+-   rows represent car models.
+
+-   car model is a categorical value
+
+-   mpg (miles/gallon) is a numeric value
+
+-   the data in this set was extracted from the 11974 Motor Trend magazine
+
+Part Two:
+
+-   addition
+
+-   subtraction
+
+-   exponents
+
+-   division
+
+-   multiplication
+
+```{r}
+pi_rounded_two_decimal_places <- round(pi, digits = 2)
+print(pi_rounded_two_decimal_places)
+```
+
+Part Three:
+
+-   changed the variable name "a" to represent that the function rounds pi to 2 decimal places
+
+-   you can find this function in the environment section
