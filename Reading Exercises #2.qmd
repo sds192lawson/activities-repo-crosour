@@ -1,0 +1,20 @@
+---
+title: "Reading Exercises #2"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+## Question 3:
+
+Part One:
+
+![](images/clipboard-8221087.png)
+
+I found this graphic compelling because I think its a great way to show data that's shown geographically and numerically. The size of the rings clearly draw your eye to countries that have larger oil reserves, and the darker color from overlapping rings highlights the areas in the world with higher concentrations of countries with oil reserves.
+
+Part Two:
+
+![](images/clipboard-2521763805.png)
+
+I find this graphic less than compelling because it's not very visually dynamic. The scales of both the x and y axis seem to accurately depict the data, but they are also trying to compare the Trump and Biden administrations. I think the graphic would benefit from different color blocks to coordinate with the president of the time. If they're just trying to compare Trump and Biden, maybe it would be clearer to begin with 2017 instead of 2016. I also think the white bar could more clearly differentiate each term.
