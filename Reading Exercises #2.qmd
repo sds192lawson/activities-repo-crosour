@@ -9,11 +9,19 @@ editor: visual
 
 Part One:
 
+<https://www.nytimes.com/2025/12/05/business/energy-environment/venezuela-oil-trump.html>
+
+I used the first graphic titled "Where there are large oil reserves" for this example.
+
 ![](images/clipboard-8221087.png)
 
 I found this graphic compelling because I think its a great way to show data that's shown geographically and numerically. The size of the rings clearly draw your eye to countries that have larger oil reserves, and the darker color from overlapping rings highlights the areas in the world with higher concentrations of countries with oil reserves.
 
 Part Two:
+
+<https://www.nytimes.com/2026/02/11/us/ice-agents-hiring-immigration-system.html>
+
+I used the first graphic titled "Number of ICE employees" for this example.
 
 ![](images/clipboard-2521763805.png)
 
