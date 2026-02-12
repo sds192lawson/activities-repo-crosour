@@ -8,6 +8,7 @@ editor: visual
 ```{r}
 library(ggplot2)
 housing <- read.csv("https://jericholawson.github.io/classes/sds192/s26/data/housing.csv")
+library(RColorBrewer)
 ```
 
 Question 1:
@@ -18,19 +19,11 @@ Variables = 27
 
 Question 2:
 
-```{r}
-view(housing)
-```
-
 Categorical \<- ocean_proximity
 
 Numerical \<- longitude, latitude, housing_median_age, total_rooms, total_bedrooms, populations, households, median_income, median_house_value
 
 Question 3:
-
-```{r}
-library(ggplot2)
-```
 
 ```{r}
 ggplot(
@@ -53,14 +46,53 @@ ggplot(
   data = housing,
   mapping = aes(
     x = ocean_proximity,
+    fill = ocean_proximity,
   )
 ) + 
   geom_bar() +
   labs(title = "Frequencies of Groups of Ocean Proximity
-for California Disticts, 1990") +
+for California Disticts, 1990", fill = "Ocean Proximity") +
   xlab("Ocean Proximity") +
-  ylab("Frequency") + 
-  theme_minimal()
+  ylab("Frequency") +
+  scale_fill_brewer(palette = "BrBG") +
+  theme_minimal() 
 ```
 
 Question 5:
+
+```{r}
+ggplot(
+  data = housing,
+  mapping = aes(
+    x = ocean_proximity,
+    y = median_income,
+    fill = ocean_proximity,
+  )
+) + 
+  geom_boxplot() +
+  labs(title = "Distribution of Median Household Income (in 1000s)
+by Ocean Proximity for California Disticts, 1990", fill = "Ocean Proximity") +
+  xlab("Ocean Proximity") +
+  ylab("Median Income (1000s)") +
+  theme_minimal() 
+
+```
+
+Question 6:
+
+```{r}
+ggplot(
+  data = housing,
+  mapping = aes(
+    x = ocean_proximity,
+    y = housing_median_age,
+    fill = ocean_proximity,
+  )
+) + 
+  geom_boxplot() +
+  labs(title = "Distribution of Housing Median Age
+by Ocean Proximity for California Disticts, 1990", fill = "Ocean Proximity") +
+  xlab("Ocean Proximity") +
+  ylab("Housing Median Age") +
+  theme_minimal() 
+```
