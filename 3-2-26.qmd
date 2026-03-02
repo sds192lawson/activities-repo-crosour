@@ -1,0 +1,70 @@
+---
+title: "3-2-26"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+## Data Wrangling
+
+```{r}
+library(tidyverse)
+data(midwest)
+```
+
+Question 1:
+
+```{r}
+# county = county
+# state to which the county belongs to = state
+# % of pop. with known poverty status = poppovertyknown
+# % with prof. degree = percprof
+# metropolitan area? = inmetro
+
+midwest |>
+  select(county, state, poppovertyknown, percprof, inmetro)
+```
+
+Question 2:
+
+```{r}
+midwest |>
+  select(county, state, poppovertyknown, percprof, inmetro) |>
+  arrange(desc(percprof))
+```
+
+```{r}
+midwest |>
+  select(county, state, poppovertyknown, percprof, inmetro) |>
+  arrange(poppovertyknown)
+```
+
+Question 3:
+
+```{r}
+midwest |>
+  select(county, state, poppovertyknown, percprof, inmetro) |>
+  arrange(desc(percprof)) |>
+  arrange(poppovertyknown) |>
+  filter(inmetro == 0) |>
+  filter(percprof < 5)
+
+```
+
+Question 4:
+
+```{r}
+midwest |>
+  mutate(popProf = percprof * poptotal) |>
+  select(county, state, popProf)
+
+```
+
+Question 5:
+
+```{r}
+midwest |>
+  group_by(state) |>
+  summarize(county = n(), medianpoppovertyknown = median(poppovertyknown), sum(poptotal), propinmetro = mean(inmetro))
+
+```
