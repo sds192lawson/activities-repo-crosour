@@ -1,0 +1,48 @@
+---
+title: "2-18"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+```{r}
+library(ggplot2)
+library(mlbench)
+data(BostonHousing2)
+```
+
+Individual Activity:
+
+```{r}
+ggplot(data = BostonHousing2,
+       aes(x=age)) +
+  geom_boxplot(fill = "orange 2", color='red') +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank()) +
+  labs(title = "Proportion of owner-occupied units built prior to 1940", x = "age")
+```
+
+```{r}
+summary(BostonHousing2)
+
+```
+
+```{r}
+ggplot(BostonHousing2, aes(x = medv)) +
+  geom_boxplot() + theme_classic() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank()) +
+  labs(x = "Median Value of Owner-Occupied Homes ($1000)")
+```
+
+Group Activity:
+
+```{r}
+ggplot(BostonHousing2, aes(x = medv, y = crim)) +
+  geom_line(color="purple") +
+  labs(title = "Per Capita Crime Rates by Median Value of
+Owner-Occupied Homes ($1000s)", x = "Median Housing Values (1000s)", y = "Per Capita Crime Rates") + 
+  theme_minimal()
+```

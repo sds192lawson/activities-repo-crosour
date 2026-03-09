@@ -1,0 +1,62 @@
+---
+title: "3-9"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+## In Class Activity
+
+```{r}
+library(tidyverse)
+wnba1 <- read.csv("wnba1.csv")
+wnba2 <- read.csv("wnba2.csv")
+wnbaStars <- read.csv("wnbaStars.csv")
+```
+
+Exercise 1
+
+```{r}
+wnba1Ref <- rbind(wnba1, wnba2) |>
+  filter(GS > 20) |>
+  mutate(Status = ifelse(TOV < 2, "protective", "careless"))|>
+  select(Player, Team, Pos, PTS, TRB, AST, Status)
+
+```
+
+Exercise 2
+
+```{r}
+ex2 <- wnbaStars |>
+  filter(Team %in% c("PHO", "SEA")) |>
+  arrange(Player)
+  
+```
+
+Exercise 3
+
+```{r}
+ex3 <- wnba1Ref |>
+  filter(Team %in% c("IND", "NYL", "LAS")) |>
+  group_by(Pos, Team) |>
+  summarize(count = n(), Team = n(), meanPTS = mean(PTS), meanAST = mean(AST), meanTRB = mean(TRB))
+```
+
+Exercise 4
+
+```{r}
+ex4 <- wnba1 |>
+  anti_join(wnba1Ref, by = "Player") |>
+  group_by(Pos) |>
+  summarize(Players = n(), avgPTS = mean(PTS), propLowTO = mean(TOV < 1))
+```
+
+Exercise 5
+
+```{r}
+ex5 <- wnba1 |>
+  inner_join(wnbaStars, by = c("Player", "Team")) |>
+  group_by(Team) |>
+  summarize(Players = n(), maxPTS = max(PTS), propGuards = mean(Pos == "G")) |>
+  filter(maxPTS > 22)
+```

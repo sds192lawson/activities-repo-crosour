@@ -1,0 +1,30 @@
+---
+title: "2-16-26"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+```{r}
+nba_data <- read.csv("nba2024.csv", header = T)
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+ggplot(data = nba_data,
+       aes(x = G)) +
+         geom_histogram(fill = "pink", color = "white") +
+  xlab("Games Played") +
+  ylab("Frequency")
+```
+
+```{r}
+ggplot(data = nba_data,
+       aes(x = Pos)) +
+  geom_bar(fill = "light blue", color = "white") +
+  labs(title = "Frequency of NBA Players'
+Positions, 2024", x = "Positions", y = "Frequency") +
+  coord_flip() +
+  theme(title = element_text(size = 15))
+```
