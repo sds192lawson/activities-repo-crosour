@@ -1,0 +1,49 @@
+---
+title: "3-23-26"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+prisons <- read.csv("Prison_Boundaries.csv")
+```
+
+```{r}
+x4 <- c(2, "times", TRUE, 4)
+# when you run this code, everything becomes a character type
+```
+
+```{r}
+x1 <- c(1, 2, 3, 4, 5)
+x2 <- c("a", "b", "c", "d", "e")
+x3 <- c(TRUE, FALSE, FALSE, TRUE, FALSE)
+
+x1 + x3
+mean(x1)
+mean(x3)
+mean(x2)
+```
+
+Q4:
+
+```{r}
+sapply(prisons, typeof)
+# telephone, SHAPE_Area, creationDate, VAL_Date, Source_DATE have the wrong type
+```
+
+Q5:
+
+```{r}
+as.integer(prisons$TELEPHONE)
+as.integer(prisons$SHAPE_Area)
+```
+
+Q6:
+
+```{r}
+library(lubridate)
+ymd_hms(prisons$EditDate)
+year(prisons$CreationDate)
+```
