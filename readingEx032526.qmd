@@ -1,0 +1,34 @@
+---
+title: "6.6 Exercise 4"
+author: "Camilla Rosour"
+format: html
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+data <- tibble(grp = c("A", "A", "B", "B"),
+       sex = c("F", "M", "F", "M"),
+       meanL = c(0.225, 0.47, 0.325, 0.547),
+       sdL = c(0.106, 0.325, 0.106, 0.308),
+       meanR = c(0.34, 0.57, 0.4, 0.647),
+       sdR = c(0.0849, 0.325, 0.0707, 0.274)
+       )
+```
+
+Exercise 4:
+
+```{r}
+ ex_4 <- data |>
+  pivot_longer(cols = c(-grp, -sex),
+               names_to = "cats",
+               values_to = "vals"
+  ) |>
+  pivot_wider(names_from = c(sex, cats),
+              values_from = vals,
+              names_sep = ".")
+print(ex_4)
+```
+
