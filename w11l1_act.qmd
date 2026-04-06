@@ -1,0 +1,95 @@
+---
+title: "4-6-26"
+author: "Camilla Rosour"
+format: html
+---
+
+```{r}
+library(mlbench)
+library(tidyverse)
+data(BostonHousing2)
+```
+
+```{r}
+# Step 1: Find Q1, Q3, and the IQR
+quarts <- quantile(BostonHousing2$medv, probs = c(0.25, 0.75))
+iqr <- quarts[2] - quarts[1]
+
+# Step 2: Find the bounds
+ub <- quarts[2] + 1.5 * iqr
+lb <- quarts[1] - 1.5 * iqr
+
+# Step 3: Show the outliers
+inds <- which(BostonHousing2$medv < lb | BostonHousing2$medv > ub)
+BostonHousing2 |> slice(inds) |>  head(3)
+```
+
+```{r}
+function_name <- function(arg1, arg2) {
+  
+  x <- #Some code goes here referencing arg1 and arg2
+  
+  return(x)
+}
+
+function_name(arg1 = input1, arg2 = input2)
+```
+
+```{r}
+my_funct <- function(arg1, arg2) {
+  
+  x <- arg1 - arg2
+  
+  return(x)
+}
+
+my_funct(7, 3)
+```
+
+Question 3:
+```{r}
+q3 <- function(var) {
+  # Step 1: Find Q1, Q3, and the IQR
+  quarts <- quantile(BostonHousing2[[var]], probs = c(0.25, 0.75))
+  iqr <- quarts[2] - quarts[1]
+
+  # Step 2: Find the bounds
+  ub <- quarts[2] + 1.5 * iqr
+  lb <- quarts[1] - 1.5 * iqr
+  
+  # Step 3: Show the outliers
+  inds <- which(BostonHousing2[[var]] < lb | BostonHousing2[[var]] > ub)
+  BostonHousing2 |> slice(inds) |>  head(3)
+}
+
+q3("medv")
+```
+
+Question 4:
+```{r}
+BostonHousing2 |>
+  select(medv, crim, zn, indus) |>
+  map(q3)
+```
+
+
+Question 5:
+
+```{r}
+library(ggplot2)
+box <- function(xvar){
+    ggplot(BostonHousing2, aes(x = .data[[xvar]])) +
+    geom_boxplot()
+}
+
+box("age")
+```
+
+Question 6:
+```{r}
+top3 <- function(var){
+  BostonHousing2[order(BostonHousing2[[var]], decreasing = T)[1:3]]
+}
+top3("medv")
+```
+
