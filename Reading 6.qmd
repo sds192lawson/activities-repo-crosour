@@ -1,0 +1,57 @@
+---
+title: "5.5 Exercise 2"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+## Modern Data Science 5.5
+
+Exercise 2:
+
+```{r}
+library(tidyverse)
+library(Lahman)
+
+people <- People
+batting <- Batting
+pitching <- Pitching
+
+```
+
+a\)
+
+```{r}
+part_a <- people |>
+  inner_join(batting, by = "playerID") |>
+  group_by(playerID) |>
+  filter(sum(HR) > 300 & sum(SB) > 300) |>
+  group_by(nameFirst, nameLast) |>
+  summarize(home_runs = sum(HR), SBs = sum(SB))
+  
+# there are 5 players under these parameters
+```
+
+b\)
+
+```{r}
+part_b <- pitching |>
+  inner_join(people, by = "playerID") |>
+  group_by(playerID) |>
+  filter(sum(W) > 300 & sum(SO) > 3000) |>
+  group_by(nameFirst, nameLast) |>
+  summarize(wins = sum(W), strikeouts = sum(SO))
+# there are 10 players under these parameters
+```
+
+c\)
+
+```{r}
+part_c <- people |>
+  inner_join(batting, by = "playerID") |>
+  group_by(playerID) |>
+  filter(HR > 50) |>
+  select(nameFirst, nameLast, yearID, HR)
+  
+  
+```

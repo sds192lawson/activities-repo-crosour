@@ -1,0 +1,58 @@
+---
+title: "4-8-26"
+author: "Camilla Rosour"
+format: html
+---
+
+```{r}
+library(mlbench)
+library(tidyverse)
+data(BostonHousing2)
+```
+
+```{r}
+
+BHsmall <- BostonHousing2 |> 
+  select(medv, crim, nox, indus) |>
+  slice(1:5)
+```
+
+Question: Apply this function inside a for loop that traverses across BHsmall.
+```{r}
+outliers <- function(x) {
+  # Step 1: Find Q1, Q3, and the IQR
+  quarts <- quantile(x, probs = c(0.25, 0.75))
+  iqr <- quarts[2] - quarts[1]
+
+  # Step 2: Find the bounds
+  ub <- quarts[2] + 1.5 * iqr
+  lb <- quarts[1] - 1.5 * iqr
+  
+  # Step 3: Show the outliers
+  inds <- which(x < lb | x > ub)
+  BHsmall |> slice(inds) |>  head(3)
+}
+
+for (item in BHsmall){
+  print(outliers(item))
+}
+
+```
+
+Question: Use one of the map functions to find the mean of each column in BHsmall.
+```{r}
+
+for (item in BHsmall){
+  print(map(item, mean))
+}
+```
+
+Question: Use one of the map functions to find the difference of two columns in BHsmall.
+```{r}
+diff_vectors <- function(x, y){
+  x - y
+}
+
+map2(BHsmall$medv, BHsmall$indus, diff_vectors)
+```
+

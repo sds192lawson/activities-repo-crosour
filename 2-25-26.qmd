@@ -1,0 +1,31 @@
+---
+title: "w5l2_act"
+author: "Camilla Rosour"
+format: html
+editor: visual
+---
+
+## 
+
+```{r}
+library(mlbench)
+library(ggplot2)
+library(tidyverse)
+data(BostonHousing2)
+
+```
+
+Activity:
+
+```{r}
+ggplot(BostonHousing2, aes(x = medv, y = chas)) +
+  geom_boxplot() + theme_classic()
+```
+
+```{r}
+ggplot(BostonHousing2, aes(x = medv, y = chas)) +
+  geom_boxplot(alpha = .44, size = 1.4, color = "pink3", median.color = "red4") + theme_classic() +
+  theme(axis.text.x = element_text(angle = 45)) +
+  labs(x = "Median Housing Values", y = "By The Charles River?", title="Median Housing Values by Proximity to Charles River")
+
+```
