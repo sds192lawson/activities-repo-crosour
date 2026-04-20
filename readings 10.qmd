@@ -1,0 +1,38 @@
+---
+title: "17.9 Exercises Problem 2"
+author: "Camilla Rosour"
+format: html
+---
+
+## Readings 10
+
+# Problem 1:
+
+```{r}
+library(tidyverse)
+library(leaflet)
+library(pdxTrees)
+library(sf)
+library(RColorBrewer)
+```
+
+```{r}
+data <- pdxTrees::get_pdxTrees_parks() |>
+  st_as_sf(coords = c("Longitude", "Latitude"))
+```
+
+
+```{r}
+pal_factor <- colorFactor(palette = "YlOrRd", 
+                    domain = data$Species,
+                    reverse = TRUE)
+
+leaflet() |>
+  addProviderTiles("OpenStreetMap") |>
+  addCircleMarkers(data = data,
+                   fillColor = ~pal_factor(data$Species),
+                   radius = 3,
+                   stroke = FALSE,
+                   fillOpacity = 3)
+```
+
